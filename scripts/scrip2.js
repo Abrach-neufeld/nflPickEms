@@ -4,12 +4,12 @@ const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
 class game {
-  constructor(homeTeam,awayTeam,homeWinProb,awayWinProb,tieProb) {
+  constructor(homeTeam,awayTeam,homeWinProb,awayWinProb) {
     this.homeTeam = homeTeam;
     this.awayTeam = awayTeam;
     this.homeWinProb=homeWinProb;
     this.awayWinProb=awayWinProb;
-    this.tieProb=tieProb;
+
 
   }
 }
@@ -34,12 +34,12 @@ async function getWinProb(url,avisPick) {
 
       var homeWinProb;
       var awayWinProb;
-      var tieProb;
-      if (homeScore>awayScore){ homeWinProb=100;  awayWinProb=0;  tieProb=0}
-      else {if (homeScore<awayScore) { homeWinProb=0;  awayWinProb=100;  tieProb=0}
-        else { homeWinProb=0;  awayWinProb=0;  tieProb=100}
+
+      if (homeScore>awayScore){ homeWinProb=100;  awayWinProb=0}
+      else {if (homeScore<awayScore) { homeWinProb=0;  awayWinProb=100}
+        else { homeWinProb=0;  awayWinProb=0;}
       }
-      const gm = new game(homeTeam,awayTeam,homeWinProb,awayWinProb,tieProb)
+      const gm = new game(homeTeam,awayTeam,homeWinProb,awayWinProb)
       return gm
 
 }
@@ -47,12 +47,11 @@ async function getWinProb(url,avisPick) {
   else {
     if (stat==""){
 
-      const tieProb= dom.window.document.querySelector('span.tie').textContent.replace("Tie: ", "").replace("%", "");
       const homeWinProb= parseFloat(dom.window.document.querySelector('span.value-home').textContent.replace("%", ""));
       const awayWinProb= parseFloat(dom.window.document.querySelector('span.value-away').textContent.replace("%", ""));
       const awayTeam= dom.window.document.querySelector('span.home-team').textContent;
       const homeTeam= dom.window.document.querySelector('span.away-team').textContent;
-      const gm = new game(homeTeam,awayTeam,homeWinProb,awayWinProb,tieProb)
+      const gm = new game(homeTeam,awayTeam,homeWinProb,awayWinProb)
       return gm
     }
     else{
@@ -85,34 +84,33 @@ async function getWinProb(url,avisPick) {
 async function run_me(){
   var rows = [];
   var gm;
-  const avisPicks = ["PHI","BUF","CLE","GB","DAL","DET","NO","TEN","TB","SF","KC","LAC","SEA","LAR"]
-  const williePicks = ["PHI","BUF","CIN","GB","DAL","ATL","NO","PIT","LV","NE","KC","JAX","SEA","LAR"]
-  const joshsPicks = ["PHI","BUF","CLE","GB","DAL","ATL","NO","PIT","TB","NE","KC","LAC","SEA","LAR"]
-  const alexPicks = ["NYG","BUF","CLE","GB","DAL","ATL","NO","TEN","TB","SF","DEN","LAC","SEA","LAR"]
-  const chuckPicks = ["PHI","BUF","CLE","GB","DAL","ATL","NO","PIT","TB","NE","KC","LAC","SEA","LAR"]
-  const mikePicks = ["PHI","BUF","CIN","GB","WSH","ATL","NO","TEN","TB","NE","KC","LAC","SEA","CHI"]
-  const zachPicks = ["PHI","BUF","CLE","GB","DAL","ATL","NO","PIT","LV","SF","KC","LAC","SEA","CHI"]
-  const jasperPicks = ["PHI","BUF","CLE","GB","WSH","ATL","NO","PIT","TB","NE","KC","LAC","ARI","LAR"]
-  const jacobPicks = ["PHI","BUF","CLE","GB","WSH","ATL","NO","PIT","TB","NE","KC","LAC","SEA","LAR"]
+  const avisPicks = ["A","A","H","H","H","H","A","H","H","A","H","H","H","H"]
+  const williePicks = ["H","H","H","H","H","H","H","H","H","H","H","H","H","H"]
+  const joshsPicks =["H","H","H","H","H","H","H","H","H","H","H","H","H","H"]
+  const alexPicks = ["H","H","H","H","H","H","H","H","H","H","H","H","H","H"]
+  const chuckPicks = ["H","H","H","H","H","H","H","H","H","H","H","H","H","H"]
+  const mikePicks = ["H","H","H","H","H","H","H","H","H","H","H","H","H","H"]
+  const zachPicks = ["H","H","H","H","H","H","H","H","H","H","H","H","H","H"]
+  const jasperPicks = ["H","H","H","H","H","H","H","H","H","H","H","H","H","H"]
+  const jacobPicks = ["H","H","H","H","H","H","H","H","H","H","H","H","H","H"]
 
 
   const picks = [avisPicks,williePicks,joshsPicks,alexPicks,chuckPicks,mikePicks,zachPicks,jasperPicks,jacobPicks]
 
-  urlList=["https://www.espn.com/nfl/game/_/gameId/401220259",
-    "https://www.espn.com/nfl/game/_/gameId/401220138",
-  "https://www.espn.com/nfl/game/_/gameId/401220155",
-  "https://www.espn.com/nfl/game/_/gameId/401220183",
-  "https://www.espn.com/nfl/game/_/gameId/401220266",
-  "https://www.espn.com/nfl/game/_/gameId/401220310",
-  "https://www.espn.com/nfl/game/_/gameId/401220322",
-  "https://www.espn.com/nfl/game/_/gameId/401249063",
-  "https://www.espn.com/nfl/game/_/gameId/401220232",
-  "https://www.espn.com/nfl/game/_/gameId/401220136",
-  "https://www.espn.com/nfl/game/_/gameId/401220210",
-  "https://www.espn.com/nfl/game/_/gameId/401220241",
-  "https://www.espn.com/nfl/game/_/gameId/401220338",
-  "https://www.espn.com/nfl/game/_/gameId/401220351"
-
+  urlList=["https://www.espn.com/nfl/game/_/gameId/401220314",
+  "https://www.espn.com/nfl/game/_/gameId/401220115",
+  "https://www.espn.com/nfl/game/_/gameId/401220158",
+  "https://www.espn.com/nfl/game/_/gameId/401220169",
+  "https://www.espn.com/nfl/game/_/gameId/401220288",
+  "https://www.espn.com/nfl/game/_/gameId/401220292",
+  "https://www.espn.com/nfl/game/_/gameId/401220222",
+  "https://www.espn.com/nfl/game/_/gameId/401220127",
+  "https://www.espn.com/nfl/game/_/gameId/401220148",
+  "https://www.espn.com/nfl/game/_/gameId/401220212",
+  "https://www.espn.com/nfl/game/_/gameId/401220277",
+  "https://www.espn.com/nfl/game/_/gameId/401220361",
+  "https://www.espn.com/nfl/game/_/gameId/401220258",
+  "https://www.espn.com/nfl/game/_/gameId/401220257"
 ]
   for (i in urlList){
 
@@ -144,7 +142,7 @@ var projected=[0,0,0,0,0,0,0,0,0]
         k+= '<td>' + rows[i].awayTeam + '</td>';
         k+= '<td>' + rows[i].homeWinProb + '</td>';
         k+= '<td>' + rows[i].awayWinProb + '</td>';
-        k+= '<td>' + rows[i].tieProb + '</td>';
+
         //k+= '<td>' + picks[j][i] + '</td>';
         for (j=0;j<picks.length;j++){
         if (((picks[j][i]==rows[i].homeTeam) && (rows[i].homeWinProb==100))||((picks[j][i]==rows[i].awayTeam) && (rows[i].awayWinProb==100)))
@@ -162,9 +160,9 @@ var projected=[0,0,0,0,0,0,0,0,0]
           else {
             k+= '<td>' + picks[j][i] + '</td>';
           }
-        }/**/
+        }
       }
-        k+= '</tr>';
+  /*      k+= '</tr>';
     }
     k+= '<tr>';
     k+= '<td>' + "TOTAL" + '</td>';
@@ -182,10 +180,54 @@ var projected=[0,0,0,0,0,0,0,0,0]
       k+= '<td>' + Math.round(projected[person]/10)/10+ '</td>';
     }
     k+= '</tr>';
-    k+='</tbody>';
+    k+='</tbody>';*/
 
-    document.getElementById('tableData').innerHTML = k;
-    return rows
+    k+= '</tr>';
+     }
+     k+= '<tr>';
+     k+= '<td>' + "WIN" + '</td>';
+     k+= '<td>' + "PERCENTAGE" + '</td>';
+     k+= '<td>' + "" + '</td>';
+     k+= '<td>' + "" + '</td>';
+     var rand;
+     var winTeam;
+     var simWins = [0,0,0,0,0,0,0,0,0]
+     const numSims = 5000;
+     var winner;
+     for (sim=0;sim<numSims;sim++){
+       //Fill out gameWins
+       var gameWins = [0,0,0,0,0,0,0,0,0]
+       for (game=0;game<homeTeams.length;game++){
+
+         rand = Math.random()*100;
+         if (rand<homeWinProbs[game]){winTeam=homeTeams[game]}
+         else {winTeam=awayTeams[game]}
+         for (person=0; person<picks.length;person++)
+         {
+           if(picks[person][game]==winTeam){gameWins[person]+=1}
+         }
+       }
+       //Fill out simWins
+       const max = Math.max(...gameWins)
+       var winArray=[]
+       for (i=0;i<gameWins.length;i++)
+       {
+         if (gameWins[i]==max) {winArray.push(i)}
+       }
+       for (i=0;i<winArray.length;i++)
+       {
+         simWins[winArray[i]]+=1/winArray.length
+       }
+   }
+  for (person=0; person<picks.length;person++)
+  {
+    k+= '<td>' + Math.round(simWins[person]*100/numSims)+ '</td>';
+    //k+= '<td>' + gameWins[person]+ '</td>';
+  }
+  k+= '</tr>';
+  k+='</tbody>';
+  document.getElementById('tableData').innerHTML = k;
+  return rows
 
 }
 rows = run_me();
