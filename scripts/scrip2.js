@@ -14,7 +14,7 @@ class game {
   }
 }
 
-async function getWinProb(url,avisPick) {
+async function getWinProb(url) {
 
 
 
@@ -23,10 +23,10 @@ async function getWinProb(url,avisPick) {
     const dom = await new JSDOM(text);
 
     const stat = dom.window.document.querySelector('span.status-detail').textContent
-    console.log(stat)
+    const homeTeam= dom.window.document.querySelector('span.away-team').textContent;
+    const awayTeam= dom.window.document.querySelector('span.home-team').textContent;
     if (stat=="Final"){
-      const homeTeam= dom.window.document.querySelector('span.away-team').textContent;
-      const awayTeam= dom.window.document.querySelector('span.home-team').textContent;
+
       const scores= dom.window.document.querySelectorAll('div.score-container');
       const awayScore=parseInt(scores[0].textContent);
       const homeScore=parseInt(scores[1].textContent);
@@ -49,14 +49,12 @@ async function getWinProb(url,avisPick) {
 
       const homeWinProb= parseFloat(dom.window.document.querySelector('span.value-home').textContent.replace("%", ""));
       const awayWinProb= parseFloat(dom.window.document.querySelector('span.value-away').textContent.replace("%", ""));
-      const awayTeam= dom.window.document.querySelector('span.home-team').textContent;
-      const homeTeam= dom.window.document.querySelector('span.away-team').textContent;
+
       const gm = new game(homeTeam,awayTeam,homeWinProb,awayWinProb)
       return gm
     }
     else{
-      const awayTeam= dom.window.document.querySelector('span.home-team').textContent;
-      const homeTeam= dom.window.document.querySelector('span.away-team').textContent;
+
       const winProbText=dom.window.document.querySelectorAll('div.time-info')[0].textContent;
 
       const winTeam=winProbText.substring(0,3)
