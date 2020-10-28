@@ -24,6 +24,7 @@ const mikePicks = ["H","H","H","H","H","H","H","H","H","H","H","H","H","H"]
 const zachPicks = ["H","H","H","H","H","H","H","H","H","H","H","H","H","H"]
 const jasperPicks = ["H","H","H","H","H","H","H","H","H","H","H","H","H","H"]
 const jacobPicks = ["H","H","H","H","H","H","H","H","H","H","H","H","H","H"]
+const gaureshPicks = ["H","H","H","H","A","H","H","H","H","H","H","H","H","H"]
 
 
-const picks = [avisPicks,williePicks,joshsPicks,alexPicks,chuckPicks,mikePicks,zachPicks,jasperPicks,jacobPicks]
+const picks = [avisPicks,williePicks,joshsPicks,alexPicks,chuckPicks,mikePicks,zachPicks,jasperPicks,jacobPicks,gaureshPicks]

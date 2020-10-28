@@ -100,7 +100,7 @@ var homeTeams =[];
 var awayTeams =[];
 var homeWinProbs=[];
 var awayWinProbs=[];
-var projected=[0,0,0,0,0,0,0,0,0]
+var projected=new Array(picks.length).fill(0);
   }
 
 
@@ -164,12 +164,12 @@ var projected=[0,0,0,0,0,0,0,0,0]
      k+= '<td>' + "" + '</td>';
      var rand;
      var winTeam;
-     var simWins = [0,0,0,0,0,0,0,0,0]
+     var simWins =new Array(picks.length).fill(0);
      const numSims = 5000;
      var winner;
      for (sim=0;sim<numSims;sim++){
        //Fill out gameWins
-       var gameWins = [0,0,0,0,0,0,0,0,0]
+       var gameWins =new Array(picks.length).fill(0);
        for (game=0;game<homeTeams.length;game++){
 
          rand = Math.random()*100;
