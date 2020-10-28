@@ -135,31 +135,13 @@ var projected=new Array(picks.length).fill(0);
           }
         }
       }
-  /*      k+= '</tr>';
-    }
-    k+= '<tr>';
-    k+= '<td>' + "TOTAL" + '</td>';
-    k+= '<td>' + "PROJECTED" + '</td>';
-    k+= '<td>' + "WINS" + '</td>';
-    k+= '<td>' + "" + '</td>';
-    k+= '<td>' + "" + '</td>';
-    for (person=0;person<picks.length;person++){
-      for (game=0; game<picks[person].length;game++)
-      {
 
-        if(picks[person][game]==homeTeams[game]){projected[person]+=homeWinProbs[game]}
-        else{projected[person]+=awayWinProbs[game]}
-      }
-      k+= '<td>' + Math.round(projected[person]/10)/10+ '</td>';
-    }
-    k+= '</tr>';
-    k+='</tbody>';*/
 
     k+= '</tr>';
      }
      k+= '<tr>';
-     k+= '<td>' + "WIN" + '</td>';
-     k+= '<td>' + "PERCENTAGE" + '</td>';
+     k+= '<td>' + "<b> WIN% </b>" + '</td>';
+     k+= '<td>' + "" + '</td>';
      k+= '<td>' + "" + '</td>';
      k+= '<td>' + "" + '</td>';
      var rand;
