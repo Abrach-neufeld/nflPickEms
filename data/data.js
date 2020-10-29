@@ -15,16 +15,16 @@ urlList=["https://www.espn.com/nfl/game/_/gameId/401220314",
 "https://www.espn.com/nfl/game/_/gameId/401220258",
 "https://www.espn.com/nfl/game/_/gameId/401220257"
 ]
-const avisPicks = ["A","A","H","H","H","H","A","H","H","A","H","H","H","H"]
-const williePicks = ["H","H","H","H","H","H","H","H","H","H","H","H","H","H"]
-const joshsPicks =["H","H","H","H","H","H","H","H","H","H","H","H","H","H"]
-const alexPicks = ["H","H","H","H","H","H","H","H","H","H","H","H","H","H"]
-const chuckPicks = ["H","H","H","H","H","H","H","H","H","H","H","H","H","H"]
-const mikePicks = ["H","H","H","H","H","H","H","H","H","H","H","H","H","H"]
-const zachPicks = ["H","H","H","H","H","H","H","H","H","H","H","H","H","H"]
-const jasperPicks = ["H","H","H","H","H","H","H","H","H","H","H","H","H","H"]
-const jacobPicks = ["H","H","H","H","H","H","H","H","H","H","H","H","H","H"]
-const gaureshPicks = ["H","H","H","H","A","H","H","H","H","H","H","H","H","H"]
+const avisPicks = ["CAR","BUF","TEN","LV","IND","GB","KC","LAR","BAL","LAC","NO","SF","PHI","TB"]
+const williePicks = ["ATL","NE","TEN","LV","IND","GB","KC","LAR","BAL","LAC","NO","SEA","PHI","TB"]
+const joshsPicks =["CAR","BUF","TEN","LV","IND","GB","KC","LAR","BAL","LAC","NO","SEA","PHI","TB"]
+const alexPicks = ["ATL","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA"]
+const chuckPicks = ["CAR","BUF","TEN","LV","IND","GB","KC","LAR","BAL","LAC","NO","SEA","PHI","TB"]
+const mikePicks = ["CAR","BUF","TEN","LV","DET","GB","KC","MIA","PIT","LAC","NO","SEA","PHI","TB"]
+const zachPicks = ["CAR","BUF","TEN","LV","IND","GB","KC","LAR","PIT","LAC","NO","SEA","PHI","TB"]
+const jasperPicks = ["ATL","BUF","TEN","LV","IND","GB","KC","LAR","BAL","LAC","NO","SEA","PHI","TB"]
+const jacobPicks = ["CAR","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA"]
+const gaureshPicks = ["CAR","BUF","TEN","LV","DET","GB","KC","LAR","BAL","LAC","NO","SEA","PHI","TB"]
 
 
 const picks = [avisPicks,williePicks,joshsPicks,alexPicks,chuckPicks,mikePicks,zachPicks,jasperPicks,jacobPicks,gaureshPicks]
