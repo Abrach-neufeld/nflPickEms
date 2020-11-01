@@ -18,12 +18,12 @@ urlList=["https://www.espn.com/nfl/game/_/gameId/401220314",
 const avisPicks = ["CAR","BUF","TEN","LV","IND","GB","KC","LAR","BAL","LAC","NO","SF","PHI","TB"]
 const williePicks = ["ATL","NE","TEN","LV","IND","GB","KC","LAR","BAL","LAC","NO","SEA","PHI","TB"]
 const joshsPicks =["CAR","BUF","TEN","LV","IND","GB","KC","LAR","BAL","LAC","NO","SEA","PHI","TB"]
-const alexPicks = ["ATL","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA"]
+const alexPicks = ["ATL","BUF","TEN","CLE","IND","GB","KC","LAR","BAL","LAC","NO","SF","PHI","TB"]
 const chuckPicks = ["CAR","BUF","TEN","LV","IND","GB","KC","LAR","BAL","LAC","NO","SEA","PHI","TB"]
 const mikePicks = ["CAR","BUF","TEN","LV","DET","GB","KC","MIA","PIT","LAC","NO","SEA","PHI","TB"]
 const zachPicks = ["CAR","BUF","TEN","LV","IND","GB","KC","LAR","PIT","LAC","NO","SEA","PHI","TB"]
 const jasperPicks = ["ATL","BUF","TEN","LV","IND","GB","KC","LAR","BAL","LAC","NO","SEA","PHI","TB"]
-const jacobPicks = ["CAR","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA"]
+const jacobPicks = ["CAR","BUF","TEN","LV","IND","GB","KC","LAR","BAL","LAC","CHI","SEA","PHI","NYG"]
 const gaureshPicks = ["CAR","BUF","TEN","LV","DET","GB","KC","LAR","BAL","LAC","NO","SEA","PHI","TB"]
 
 
