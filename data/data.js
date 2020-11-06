@@ -1,30 +1,30 @@
 
 
-urlList=["https://www.espn.com/nfl/game/_/gameId/401220314",
-"https://www.espn.com/nfl/game/_/gameId/401220115",
-"https://www.espn.com/nfl/game/_/gameId/401220158",
-"https://www.espn.com/nfl/game/_/gameId/401220169",
-"https://www.espn.com/nfl/game/_/gameId/401220288",
-"https://www.espn.com/nfl/game/_/gameId/401220292",
-"https://www.espn.com/nfl/game/_/gameId/401220222",
-"https://www.espn.com/nfl/game/_/gameId/401220127",
-"https://www.espn.com/nfl/game/_/gameId/401220148",
-"https://www.espn.com/nfl/game/_/gameId/401220212",
-"https://www.espn.com/nfl/game/_/gameId/401220277",
-"https://www.espn.com/nfl/game/_/gameId/401220361",
-"https://www.espn.com/nfl/game/_/gameId/401220258",
-"https://www.espn.com/nfl/game/_/gameId/401220257"
+urlList=["https://www.espn.com/nfl/game/_/gameId/401220359",
+"https://www.espn.com/nfl/game/_/gameId/401220311",
+"https://www.espn.com/nfl/game/_/gameId/401220120",
+"https://www.espn.com/nfl/game/_/gameId/401220207",
+"https://www.espn.com/nfl/game/_/gameId/401220189",
+"https://www.espn.com/nfl/game/_/gameId/401220224",
+"https://www.espn.com/nfl/game/_/gameId/401220299",
+"https://www.espn.com/nfl/game/_/gameId/401220267",
+"https://www.espn.com/nfl/game/_/gameId/401220194",
+"https://www.espn.com/nfl/game/_/gameId/401220236",
+"https://www.espn.com/nfl/game/_/gameId/401220248",
+"https://www.espn.com/nfl/game/_/gameId/401220342",
+"https://www.espn.com/nfl/game/_/gameId/401220330",
+"https://www.espn.com/nfl/game/_/gameId/401220140"
 ]
-const avisPicks = ["CAR","BUF","TEN","LV","IND","GB","KC","LAR","BAL","LAC","NO","SF","PHI","TB"]
-const williePicks = ["ATL","NE","TEN","LV","IND","GB","KC","LAR","BAL","LAC","NO","SEA","PHI","TB"]
-const joshsPicks =["CAR","BUF","TEN","LV","IND","GB","KC","LAR","BAL","LAC","NO","SEA","PHI","TB"]
-const alexPicks = ["ATL","BUF","TEN","CLE","IND","GB","KC","LAR","BAL","LAC","NO","SF","PHI","TB"]
-const chuckPicks = ["CAR","BUF","TEN","LV","IND","GB","KC","LAR","BAL","LAC","NO","SEA","PHI","TB"]
-const mikePicks = ["CAR","BUF","TEN","LV","DET","GB","KC","MIA","PIT","LAC","NO","SEA","PHI","TB"]
-const zachPicks = ["CAR","BUF","TEN","LV","IND","GB","KC","LAR","PIT","LAC","NO","SEA","PHI","TB"]
-const jasperPicks = ["ATL","BUF","TEN","LV","IND","GB","KC","LAR","BAL","LAC","NO","SEA","PHI","TB"]
-const jacobPicks = ["CAR","BUF","TEN","LV","IND","GB","KC","LAR","BAL","LAC","CHI","SEA","PHI","NYG"]
-const gaureshPicks = ["CAR","BUF","TEN","LV","DET","GB","KC","LAR","BAL","LAC","NO","SEA","PHI","TB"]
+const avisPicks = ["GB","ATL","SEA","TEN","IND","KC","MIN","WSH","HOU","LV","PIT","MIA","TB","NE"]
+const williePicks = ["GB","ATL","SEA","TEN","IND","KC","DET","WSH","JAX","LV","PIT","ARI","NO","NE"]
+const joshsPicks =["GB","DEN","SEA","TEN","BAL","KC","MIN","WSH","HOU","LAC","PIT","ARI","TB","NE"]
+const alexPicks = ["GB","ATL","SEA","TEN","BAL","KC","DET","WSH","HOU","LAC","PIT","ARI","TB","NE"]
+const chuckPicks = ["GB","ATL","SEA","TEN","BAL","KC","MIN","NYG","HOU","LV","PIT","ARI","TB","NE"]
+const mikePicks = ["GB","DEN","SEA","CHI","IND","KC","MIN","NYG","HOU","LV","PIT","ARI","TB","NE"]
+const zachPicks = ["GB","ATL","SEA","TEN","BAL","KC","MIN","NYG","HOU","LV","PIT","ARI","TB","NE"]
+const jasperPicks = ["GB","ATL","BUF","TEN","BAL","KC","MIN","WSH","HOU","LV","PIT","ARI","TB","NE"]
+const jacobPicks = ["GB","ATL","SEA","TEN","BAL","KC","MIN","WSH","HOU","LV","PIT","ARI","TB","NE"]
+const gaureshPicks = ["GB","ATL","SEA","TEN","BAL","KC","MIN","WSH","HOU","LV","PIT","ARI","TB","NE"]
 
 
 const picks = [avisPicks,williePicks,joshsPicks,alexPicks,chuckPicks,mikePicks,zachPicks,jasperPicks,jacobPicks,gaureshPicks]
