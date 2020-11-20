@@ -11,7 +11,18 @@ class game {
     this.awayWinProb=awayWinProb;
   }
 }
+function componentToHex(c) {
+  var hex = c.toString(16);
+  return hex.length == 1 ? "0" + hex : hex;
+}
+
+function rgbToHex(r, g, b) {
+  return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+}
+
 //FUNCTIONS
+
+
 async function getWinProb(url)
 {
   //Takes an espn gamecast url and returns a game object with home/away team/winProb
@@ -82,7 +93,7 @@ async function getWinProb(url)
 
 
 
-async function createTable(urlList,picks)
+async function createTable(urlList,picks,weights)
 {
   var rows = [];
   var gm;
@@ -106,6 +117,7 @@ async function createTable(urlList,picks)
     var awayTeams =[];
     var homeWinProbs=[];
     var awayWinProbs=[];
+    var scores=new Array(picks.length).fill(0);
     var projected=new Array(picks.length).fill(0);
 
 
@@ -129,27 +141,75 @@ async function createTable(urlList,picks)
       k+= '<td>' + rows[i].homeWinProb + '</td>';
       k+= '<td>' + rows[i].awayWinProb + '</td>';
       //Loop over each persons picks and make cell green if right, red if wrong
+/*
+      var homeColor;
+      var homeGreen;
+      var homeRed;
+      var awayGreeen;
+      var awayRed;
+      var color;
+      var tdString;*/
       for (j=0;j<picks.length;j++)
       {
+        /*
+        homeColor = Math.round(rows[i].homeWinProb/100*255)
+        homeRed=255-homeColor
+        homeGreen = 255-homeRed
+
+        awayGreen=homeRed
+        awayRed=homeGreen
+
+        if(picks[j][i]==rows[i].homeTeam)
+        {
+            color=rgbToHex(homeRed,homeGreen,0)
+            tdString = '<td style="background-color:'+color+'">'
+
+            k+= tdString + picks[j][i] + '</td>';
+        }
+        if(picks[j][i]==rows[i].awayTeam)
+        {
+          color=rgbToHex(awayRed,awayGreen,0)
+          tdString = '<td style="background-color:'+color+'">'
+
+          k+= tdString + picks[j][i] + '</td>';
+        }*/
         if (((picks[j][i]==rows[i].homeTeam) && (rows[i].homeWinProb==100))||((picks[j][i]==rows[i].awayTeam) && (rows[i].awayWinProb==100)))
         {
-          k+= '<td style="background-color:green">' + picks[j][i] + '</td>';
+          k+= '<td style="background-color:green">' + picks[j][i]+" ("+weights[j][i]+")" + '</td>';
+          scores[j]+=weights[j][i]
         }
 
         else
         {
           if(((picks[j][i]==rows[i].awayTeam) && (rows[i].homeWinProb==100))||((picks[j][i]==rows[i].homeTeam) && (rows[i].awayWinProb==100)))
           {
-            k+= '<td style="background-color:red">' + picks[j][i] + '</td>';
+            k+= '<td style="background-color:red">' + picks[j][i]+" ("+weights[j][i]+")"  + '</td>';
           }
           else
           {
-            k+= '<td>' + picks[j][i] + '</td>';
+            k+= '<td>' + picks[j][i]+" ("+weights[j][i]+")"  + '</td>';
           }
         }
       }
       k+= '</tr>';
      }
+     //Add in total points row
+     k+= '<tr>';
+     k+= '<td>' + "<b> Score: </b>" + '</td>';
+     k+= '<td>' + "" + '</td>';
+     k+= '<td>' + "" + '</td>';
+     k+= '<td>' + "" + '</td>';
+
+     for (person=0; person<scores.length;person++)
+     {
+
+         k+= '<td>' + scores[person] + '</td>';
+
+     }
+
+
+     k+= '</tr>';
+
      //Add in win% row
      k+= '<tr>';
      k+= '<td>' + "<b> WIN% </b>" + '</td>';
@@ -177,7 +237,7 @@ async function createTable(urlList,picks)
          //Loop over each person and give them a game win if their pick matched simulated winning eam
          for (person=0; person<picks.length;person++)
          {
-           if(picks[person][game]==winTeam){gameWins[person]+=1}
+           if(picks[person][game]==winTeam){gameWins[person]+=weights[person][game]}
          }
        }
        //Fill out simWins
@@ -206,4 +266,4 @@ async function createTable(urlList,picks)
 
 
 }
-createTable(urlList,picks);
+createTable(urlList,picks,weights);
