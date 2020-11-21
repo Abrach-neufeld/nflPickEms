@@ -1,0 +1,30 @@
+h1{
+  text-align:center;
+  margin: 10px;
+}
+
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.header {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.football {
+  width: 20%;
+}
+
+.winnerDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.winnerImg {
+  padding: 20px;
+  width: 150px;
+}
