@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event='
+export const BASE_URL = 'https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event='
 
 export const gameIDs = [
   401220360,

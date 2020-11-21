@@ -2,7 +2,7 @@
   "name": "nfl_pickems",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://oettingerj.github.io/nflPickEms",
+  "homepage": "https://oettingerj.github.io/nflPickEms",
   "dependencies": {
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
