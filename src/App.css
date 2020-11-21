@@ -5,6 +5,8 @@ h1{
 
 /* Three image containers (use 25% for four, and 50% for two, etc) */
 .header {
+  width: 80%;
+  margin: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -15,9 +17,14 @@ h1{
   width: 20%;
 }
 
+.winnerDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
 .winnerImg {
-  display: block;
-  margin: auto;
   padding: 20px;
-  width: 40%;
+  width: 150px;
 }

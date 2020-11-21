@@ -10,18 +10,16 @@ function App() {
     <div className='App'>
       <div className='header'>
         <Image src={football} alt='football' className='football'/>
-        <h1> NFL PickEms </h1>
+        <div>
+          <h1> NFL PickEms </h1>
+          <div className='winnerDiv'>
+            <Image roundedCircle src={winnerPhoto} alt='Zach' className='winnerImg'/>
+            <h5> Reigning Champ: Zach Frischer </h5>
+          </div>
+        </div>
         <Image src={football} alt='football' className='football'/>
       </div>
-
       <Standings/>
-
-      <div>
-        <h1> Reigning Champ: Zach Frischer </h1>
-      </div>
-      <div>
-        <Image roundedCircle src={winnerPhoto} alt='Zach' className='winnerImg'/>
-      </div>
     </div>
   );
 }
