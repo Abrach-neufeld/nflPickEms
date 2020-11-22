@@ -84,12 +84,14 @@ async function getWinProb(gameID) {
   } else {
     //If game is in progress or over
     const winPercentages = data.winprobability[data.winprobability.length - 1]
-    const homeWinProb = parseFloat(winPercentages.homeWinPercentage)
-    const awayWinProb = parseFloat(1 - winPercentages.homeWinPercentage)
+    let homeWinProb = parseFloat(winPercentages.homeWinPercentage) * 100
+    let awayWinProb = parseFloat(1 - winPercentages.homeWinPercentage) * 100
 
-    return new Game(homeTeam, awayTeam,
-      homeWinProb === 1 ? 100 : homeWinProb,
-      awayWinProb === 1 ? 100 : awayWinProb, 0)
+    // Round to 2 decimal places
+    homeWinProb = Math.round((homeWinProb + Number.EPSILON) * 100) / 100
+    awayWinProb = Math.round((awayWinProb + Number.EPSILON) * 100) / 100
+
+    return new Game(homeTeam, awayTeam, homeWinProb, awayWinProb, 0)
   }
 }
 
