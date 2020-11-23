@@ -62,7 +62,7 @@ class App extends React.Component {
             <Link to='/picker' component={Button} disabled={this.state.submissionLock}>Make Picks</Link>
           </Col>
         </Row>
-        <Row>
+        <Row className='mb-3'>
           <Col>
             <Standings/>
           </Col>

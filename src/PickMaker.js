@@ -12,6 +12,7 @@ class PickMaker extends React.Component {
     super(props)
     this.state = {
       loadingGames: true,
+      submissionLock: true,
       games: [],
       picks: {},
       pickOrder: [],
@@ -30,11 +31,20 @@ class PickMaker extends React.Component {
         players: snapshot.docs.map(doc => doc.id)
       })
     }))
+    promises.push(db.collection('weeks').get().then((snapshot) => {
+      const submissionLock = snapshot.docs[snapshot.size - 1].get('submissionLock')
+      const now = Date.now() / 1000
+      this.setState({
+        submissionLock: now > submissionLock.seconds
+      })
+    }))
     Promise.all(promises).then(() => this.setState({loadingGames: false}))
   }
 
   submitPicks = () => {
-    if (this.state.pickOrder.length !== this.state.games.length) {
+    if (this.state.submissionLock) {
+      alert('Submissions are locked for the week.')
+    } else if (this.state.pickOrder.length !== this.state.games.length) {
       alert('You must make a pick for every game.')
     } else {
       const db = firebase.firestore()
