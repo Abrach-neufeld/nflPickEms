@@ -1,0 +1,17 @@
+.teamCard {
+  cursor: pointer;
+  width: 250px;
+}
+
+.teamCard:hover {
+  background-color: lightskyblue;
+}
+
+.cardContent {
+  align-items: center;
+  justify-content: space-around;
+}
+
+.teamLogo {
+  width: 100px;
+}

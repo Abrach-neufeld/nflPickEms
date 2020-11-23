@@ -1,14 +1,18 @@
 import React from 'react'
 import axios from 'axios'
-import * as NFLData from './data'
 import {Table} from 'react-bootstrap'
 import './Standings.css'
+import firebase from 'firebase/app'
+import 'firebase/firestore'
+
+const BASE_URL = 'https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event='
 
 export default class Standings extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      tableData: null
+      tableData: null,
+      players: []
     }
   }
 
@@ -17,9 +21,10 @@ export default class Standings extends React.Component {
   }
 
   generateTableData = async () => {
-    const table = await getTable(NFLData.gameIDs, NFLData.picks, NFLData.weights)
+    const table = await getTable()
     this.setState({
-      tableData: table
+      tableData: table.data,
+      players: table.players
     })
   }
 
@@ -33,16 +38,9 @@ export default class Standings extends React.Component {
           <th>Home Win %</th>
           <th>Away Team %</th>
 
-          <th>Avi</th>
-          <th>Willie</th>
-          <th>Josh</th>
-          <th>Alex</th>
-          <th>Chuck</th>
-          <th>Mike</th>
-          <th>Zach</th>
-          <th>Jasper</th>
-          <th>Jacob</th>
-          <th>Gauresh</th>
+          {this.state.players.map((player) => (
+            <th>{player}</th>
+          ))}
         </tr>
         </thead>
         <tbody>
@@ -68,7 +66,7 @@ async function getWinProb(gameID) {
   //Takes an espn game id and returns a game object with home/away team/winProb
 
   //Get data from espn
-  const response = await axios.get(NFLData.BASE_URL + gameID)
+  const response = await axios.get(BASE_URL + gameID)
   const data = response.data
 
   //get home and away teams
@@ -96,7 +94,44 @@ async function getWinProb(gameID) {
 }
 
 
-async function getTable(urlList, picks, weights) {
+async function getTable() {
+  const db = firebase.firestore()
+  const currentWeek = await db.collection('weeks').get().then((snapshot) => {
+    return snapshot.docs[snapshot.size - 1].ref.collection('games')
+  })
+  const gameIDs = await currentWeek.get().then((gamesSnapshot) => {
+      return gamesSnapshot.docs.map(doc => doc.id)
+  })
+
+  const picks = []
+  const weights = []
+
+  const players = await db.collection('players').get().then((snapshot) => {
+    return snapshot.docs.map(doc => doc.id)
+  })
+  const playerIndices = {}
+  for (let i = 0; i < players.length; i++) {
+    playerIndices[players[i]] = i
+    picks[i] = []
+    weights[i] = []
+  }
+
+  const promises = []
+  for (let i = 0; i < gameIDs.length; i++) {
+    const gameID = gameIDs[i]
+    promises.push(currentWeek.doc(gameID).collection('picks').get().then((snapshot) => {
+      snapshot.forEach((docSnapshot) => {
+        const name = docSnapshot.id
+        const index = playerIndices[name]
+        const pickInfo = docSnapshot.data()
+        picks[index][i] = pickInfo.pick
+        weights[index][i] = pickInfo.weight
+      })
+    }))
+  }
+
+  await Promise.all(promises)
+
   //Initialize empty lists/arrays
   const scores = new Array(picks.length).fill(0)
   const homeWinProbs = []
@@ -104,21 +139,12 @@ async function getTable(urlList, picks, weights) {
   const homeTeams = []
   const rows = []
   let gm
+
   //Loop over each game url
-  for (let i = 0; i < urlList.length; i++) {
+  for (let i = 0; i < gameIDs.length; i++) {
     //get game object and add to rows
-    gm = await getWinProb(urlList[i])
+    gm = await getWinProb(gameIDs[i])
     rows.push(gm)
-    //Convert from H/A to team name
-    for (let j = 0; j < picks.length; j++) {
-      if (picks[j][i] === 'H') {
-        picks[j][i] = gm.homeTeam
-      } else {
-        if (picks[j][i] === 'A') {
-          picks[j][i] = gm.awayTeam
-        }
-      }
-    }
   }
 
   const tableRows = []
@@ -224,5 +250,8 @@ async function getTable(urlList, picks, weights) {
   }
 
   tableRows.push(<tr>{wpColumns}</tr>)
-  return tableRows
+  return {
+    data: tableRows,
+    players
+  }
 }
