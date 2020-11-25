@@ -18,7 +18,8 @@ class PickMaker extends React.Component {
       pickOrder: [],
       name: '',
       week: null,
-      players: []
+      players: [],
+      canSubmit: true
     }
   }
 
@@ -46,10 +47,12 @@ class PickMaker extends React.Component {
   }
 
   submitPicks = () => {
+    this.setState({canSubmit: false})
     if (this.state.submissionLock) {
       alert('Submissions are locked for the week.')
     } else if (this.state.pickOrder.length !== this.state.games.length) {
       alert('You must make a pick for every game.')
+      this.setState({canSubmit: true})
     } else {
       const db = firebase.firestore()
       const gamesCollection = db.collection('weeks').doc(this.state.week).collection('games')
@@ -62,7 +65,7 @@ class PickMaker extends React.Component {
           weight: this.state.pickOrder.length - i
         }))
       }
-      Promise.all(promises).then(() => this.props.history.push('/'))
+      Promise.all(promises).then(() => this.props.history.push('/')).catch(() => this.setState({canSubmit: true}))
     }
   }
 
@@ -206,7 +209,8 @@ class PickMaker extends React.Component {
             <h2 style={{textAlign: 'center'}}>PickMaker™</h2>
           </Col>
           <Col style={{justifyContent: 'flex-end', display: 'flex'}}>
-            <Button size='lg' onClick={this.submitPicks} variant='primary'>Submit</Button>
+            <Button size='lg' onClick={this.submitPicks} variant='primary'
+                    disabled={!this.state.canSubmit || this.state.submissionLock}>Submit</Button>
           </Col>
         </Row>
         <Row style={{justifyContent: 'center'}} className='mt-3'>
