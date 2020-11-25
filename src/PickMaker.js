@@ -228,7 +228,7 @@ class PickMaker extends React.Component {
             <h4 style={{textAlign: 'center'}}>Pick game winners</h4>
           </Col>
           <Col>
-            <h4 style={{textAlign: 'center'}}>Sort picks by confidence</h4>
+            <h4 style={{textAlign: 'center'}}>Sort picks by confidence (most confident on top)</h4>
           </Col>
         </Row>
         <Row>
