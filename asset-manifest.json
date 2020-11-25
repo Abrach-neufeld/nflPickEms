@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/nflPickEms/static/css/main.fb2d5212.chunk.css",
-    "main.js": "/nflPickEms/static/js/main.21f739e3.chunk.js",
-    "main.js.map": "/nflPickEms/static/js/main.21f739e3.chunk.js.map",
+    "main.js": "/nflPickEms/static/js/main.acb7a240.chunk.js",
+    "main.js.map": "/nflPickEms/static/js/main.acb7a240.chunk.js.map",
     "runtime-main.js": "/nflPickEms/static/js/runtime-main.2840637e.js",
     "runtime-main.js.map": "/nflPickEms/static/js/runtime-main.2840637e.js.map",
     "static/js/2.aea3d5a0.chunk.js": "/nflPickEms/static/js/2.aea3d5a0.chunk.js",
@@ -16,6 +16,6 @@
     "static/js/runtime-main.2840637e.js",
     "static/js/2.aea3d5a0.chunk.js",
     "static/css/main.fb2d5212.chunk.css",
-    "static/js/main.21f739e3.chunk.js"
+    "static/js/main.acb7a240.chunk.js"
   ]
 }
