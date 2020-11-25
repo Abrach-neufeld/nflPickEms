@@ -22,17 +22,21 @@ class PickMaker extends React.Component {
     }
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const promises = []
-    promises.push(this.loadGameData())
     const db = firebase.firestore()
+    const week = await db.collection('weeks').get().then((snapshot) => {
+      return snapshot.docs[snapshot.size - 1].id
+    })
+    this.setState({ week })
+    promises.push(this.loadGameData(week))
     promises.push(db.collection('players').get().then((snapshot) => {
       this.setState({
         players: snapshot.docs.map(doc => doc.id)
       })
     }))
-    promises.push(db.collection('weeks').get().then((snapshot) => {
-      const submissionLock = snapshot.docs[snapshot.size - 1].get('submissionLock')
+    promises.push(db.collection('weeks').doc(week).get().then((snapshot) => {
+      const submissionLock = snapshot.get('submissionLock')
       const now = Date.now() / 1000
       this.setState({
         submissionLock: now > submissionLock.seconds
@@ -48,7 +52,7 @@ class PickMaker extends React.Component {
       alert('You must make a pick for every game.')
     } else {
       const db = firebase.firestore()
-      const gamesCollection = db.collection('weeks').doc(this.state.week.toString()).collection('games')
+      const gamesCollection = db.collection('weeks').doc(this.state.week).collection('games')
       const promises = []
       for (let i = 0; i < this.state.pickOrder.length; i++) {
         const pick = this.state.pickOrder[i]
@@ -62,12 +66,9 @@ class PickMaker extends React.Component {
     }
   }
 
-  loadGameData = async () => {
-    const response = await axios.get('https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard')
+  loadGameData = async (week) => {
+    const response = await axios.get(`https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?week=${week}`)
     const games = response.data.events
-    this.setState({
-      week: response.data.week.number
-    })
     const gameData = []
     for (const game of games) {
       const teams = game.competitions[0].competitors

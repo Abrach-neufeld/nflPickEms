@@ -8,6 +8,7 @@ import {Button, Image, Container, Row, Col} from 'react-bootstrap'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 import { HashRouter, Link, Route } from 'react-router-dom'
+import moment from 'moment'
 
 const firebaseConfig = {
   apiKey: "AIzaSyBWzWqAPP_HGNxeMD2eAl7AsLBpKxVo8Kw",
@@ -24,7 +25,8 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      submissionLock: true
+      submissionLock: true,
+      lockTime: null
     }
   }
 
@@ -33,10 +35,38 @@ class App extends React.Component {
     db.collection('weeks').get().then((snapshot) => {
       const submissionLock = snapshot.docs[snapshot.size - 1].get('submissionLock')
       const now = Date.now() / 1000
+      const lockTime = moment.unix(submissionLock.seconds)
       this.setState({
-        submissionLock: now > submissionLock.seconds
+        submissionLock: now > submissionLock.seconds,
+        lockTime
       })
     })
+  }
+
+  renderContent = () => {
+    if (this.state.submissionLock) {
+      return (
+        <Row className='mb-3'>
+          <Col>
+            <Standings/>
+          </Col>
+        </Row>
+      )
+    } else {
+      const timeFormat = "dddd MM/DD [at] H:mma"
+      return (
+        <Row className='mb-3'>
+          <Col>
+            <h3>Time to make your picks!</h3>
+            <p>
+              Picks lock for the week on {this.state.lockTime.format(timeFormat)}. After this time, you will be able to
+              see everyone's picks and odds.
+            </p>
+            <Link to='/picker' component={Button} size='lg' disabled={this.state.submissionLock}>Make Picks</Link>
+          </Col>
+        </Row>
+      )
+    }
   }
 
   render() {
@@ -57,16 +87,7 @@ class App extends React.Component {
             <Image src={football} alt='football' className='football'/>
           </Col>
         </Row>
-        <Row className='mt-3 mb-3'>
-          <Col style={{display: 'flex', justifyContent: 'flex-end'}}>
-            <Link to='/picker' component={Button} disabled={this.state.submissionLock}>Make Picks</Link>
-          </Col>
-        </Row>
-        <Row className='mb-3'>
-          <Col>
-            <Standings/>
-          </Col>
-        </Row>
+        {this.renderContent()}
       </Container>
     )
   }
