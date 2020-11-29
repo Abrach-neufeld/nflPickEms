@@ -217,6 +217,7 @@ class PickMaker extends React.Component {
           <Form.Group>
             <Form.Label>Who are you?</Form.Label>
             <Form.Control custom as='select' onChange={event => this.setState({name: event.target.value})} >
+              <option value='' selected disabled hidden>Choose your name</option>
               {this.state.players.map((player) => (
                 <option>{player}</option>
               ))}

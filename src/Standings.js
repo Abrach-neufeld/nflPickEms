@@ -167,13 +167,14 @@ async function getTable() {
 
     //Loop over each persons picks and make cell green if right, red if wrong
     for (let j = 0; j < picks.length; j++) {
+      const pickText = picks[j][i] ? picks[j][i] + ' (' + weights[j][i] + ')' : 'X'
       if (((picks[j][i] === rows[i].homeTeam) && (rows[i].homeWinProb === 100)) || ((picks[j][i] === rows[i].awayTeam) && (rows[i].awayWinProb === 100))) {
-        tableColumns.push(<td className='bg-success'>{picks[j][i] + ' (' + weights[j][i] + ')'}</td>)
+        tableColumns.push(<td className='bg-success'>{pickText}</td>)
         scores[j] += weights[j][i]
       } else if (((picks[j][i] === rows[i].awayTeam) && (rows[i].homeWinProb === 100)) || ((picks[j][i] === rows[i].homeTeam) && (rows[i].awayWinProb === 100))) {
-        tableColumns.push(<td className='bg-danger'>{picks[j][i] + ' (' + weights[j][i] + ')'}</td>)
+        tableColumns.push(<td className='bg-danger'>{pickText}</td>)
       } else {
-        tableColumns.push(<td>{picks[j][i] + ' (' + weights[j][i] + ')'}</td>)
+        tableColumns.push(<td>{pickText}</td>)
       }
     }
     tableRows.push(<tr>{tableColumns}</tr>)
