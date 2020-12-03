@@ -140,7 +140,7 @@ class PickMaker extends React.Component {
         <Card.Body>
           <Row className='cardContent'>
             <Col><Image src={team.logo} className='teamLogo'/></Col>
-            <Col><Card.Title>{team.abbr}</Card.Title></Col>
+            <Col className='teamAbbr'><Card.Title>{team.abbr}</Card.Title></Col>
           </Row>
         </Card.Body>
       </Card>
