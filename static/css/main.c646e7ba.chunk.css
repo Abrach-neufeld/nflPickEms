@@ -1,0 +1,2 @@
+h1{text-align:center;margin:10px}.header{justify-content:space-around;align-items:center}.football{width:200px}.winnerDiv{display:flex;flex-direction:row;align-items:center;justify-content:center}.winnerImg{padding:20px;width:150px}.table{margin:auto}.teamCard{cursor:pointer;width:250px}.teamCard:hover{background-color:#87cefa}.cardContent{align-items:center;justify-content:space-around}.teamLogo{width:100px}@media only screen and (max-width:980px){.teamAbbr{display:none}}
+/*# sourceMappingURL=main.c646e7ba.chunk.css.map */
