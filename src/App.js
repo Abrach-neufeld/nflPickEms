@@ -3,7 +3,7 @@ import './App.css'
 import Standings from './Standings'
 import PickMaker from './PickMaker'
 import football from './images/football.jpeg'
-import winnerPhoto from './images/Zach.jpg'
+// import winnerPhoto from './images/Zach.jpg'
 import {Button, Image, Container, Row, Col} from 'react-bootstrap'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
@@ -78,10 +78,10 @@ class App extends React.Component {
           </Col>
           <Col>
             <h1> NFL PickEms </h1>
-            <div className='winnerDiv'>
-              <Image roundedCircle src={winnerPhoto} alt='Zach' className='winnerImg'/>
-              <h5> Reigning Champ: Zach Frischer </h5>
-            </div>
+            {/*<div className='winnerDiv'>*/}
+            {/*  <Image roundedCircle src={winnerPhoto} alt='Zach' className='winnerImg'/>*/}
+            {/*  <h5> Reigning Champ: Zach Frischer </h5>*/}
+            {/*</div>*/}
           </Col>
           <Col sm='auto'>
             <Image src={football} alt='football' className='football'/>
