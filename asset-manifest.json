@@ -1,21 +1,20 @@
 {
   "files": {
     "main.css": "/nflPickEms/static/css/main.c646e7ba.chunk.css",
-    "main.js": "/nflPickEms/static/js/main.67fc12e1.chunk.js",
-    "main.js.map": "/nflPickEms/static/js/main.67fc12e1.chunk.js.map",
-    "runtime-main.js": "/nflPickEms/static/js/runtime-main.3f6c66a9.js",
-    "runtime-main.js.map": "/nflPickEms/static/js/runtime-main.3f6c66a9.js.map",
-    "static/js/2.05540e65.chunk.js": "/nflPickEms/static/js/2.05540e65.chunk.js",
-    "static/js/2.05540e65.chunk.js.map": "/nflPickEms/static/js/2.05540e65.chunk.js.map",
+    "main.js": "/nflPickEms/static/js/main.24df8016.chunk.js",
+    "main.js.map": "/nflPickEms/static/js/main.24df8016.chunk.js.map",
+    "runtime-main.js": "/nflPickEms/static/js/runtime-main.2840637e.js",
+    "runtime-main.js.map": "/nflPickEms/static/js/runtime-main.2840637e.js.map",
+    "static/js/2.aea3d5a0.chunk.js": "/nflPickEms/static/js/2.aea3d5a0.chunk.js",
+    "static/js/2.aea3d5a0.chunk.js.map": "/nflPickEms/static/js/2.aea3d5a0.chunk.js.map",
     "index.html": "/nflPickEms/index.html",
     "static/css/main.c646e7ba.chunk.css.map": "/nflPickEms/static/css/main.c646e7ba.chunk.css.map",
-    "static/js/2.05540e65.chunk.js.LICENSE.txt": "/nflPickEms/static/js/2.05540e65.chunk.js.LICENSE.txt",
-    "static/media/Zach.aa3a1f29.jpg": "/nflPickEms/static/media/Zach.aa3a1f29.jpg"
+    "static/js/2.aea3d5a0.chunk.js.LICENSE.txt": "/nflPickEms/static/js/2.aea3d5a0.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.3f6c66a9.js",
-    "static/js/2.05540e65.chunk.js",
+    "static/js/runtime-main.2840637e.js",
+    "static/js/2.aea3d5a0.chunk.js",
     "static/css/main.c646e7ba.chunk.css",
-    "static/js/main.67fc12e1.chunk.js"
+    "static/js/main.24df8016.chunk.js"
   ]
 }
