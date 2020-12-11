@@ -53,7 +53,7 @@ class App extends React.Component {
         </Row>
       )
     } else {
-      const timeFormat = "dddd MM/DD [at] H:mma"
+      const timeFormat = "dddd MM/DD [at] h:mma"
       return (
         <Row className='mb-3'>
           <Col>
