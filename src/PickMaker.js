@@ -85,9 +85,16 @@ class PickMaker extends React.Component {
           logo: team.logo
         })
       }
+
+      let odds = null
+      if (game.competitions[0].odds && game.competitions[0].odds.length > 0) {
+        odds = game.competitions[0].odds[0].details
+      }
+
       gameData.push({
         id: game.id,
-        teams: teamData
+        teams: teamData,
+        odds
       })
     }
     this.setState({ games: gameData })
@@ -154,7 +161,10 @@ class PickMaker extends React.Component {
         <Row>
           <CardDeck style={{alignItems: 'center'}}>
             {this.renderTeamCard(game.teams[0], game.id, game.teams[1])}
-            <h3>vs</h3>
+            <div className={'gameInfo'}>
+              <h3>vs</h3>
+              <span>{game.odds}</span>
+            </div>
             {this.renderTeamCard(game.teams[1], game.id, game.teams[0])}
           </CardDeck>
         </Row>

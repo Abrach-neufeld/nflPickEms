@@ -21,3 +21,9 @@
     display: none;
   }
 }
+
+.gameInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
