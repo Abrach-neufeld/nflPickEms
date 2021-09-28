@@ -125,12 +125,13 @@ class PickMaker extends React.Component {
     })
   }
 
-  setPick = (gameID, team, opposingTeam) => {
+  setPick = (gameID, team, opposingTeam, odds) => {
     const newOrder = this.state.pickOrder.filter(item => item.gameID !== gameID)
     newOrder.push({
       gameID,
       team,
-      opposingTeam
+      opposingTeam,
+      odds
     })
     this.setState({
       picks: {
@@ -141,9 +142,9 @@ class PickMaker extends React.Component {
     })
   }
 
-  renderTeamCard = (team, gameID, opposingTeam) => {
+  renderTeamCard = (team, gameID, opposingTeam, odds) => {
     return (
-      <Card className={`teamCard mb-3 ${this.state.picks[gameID] === team.abbr ? 'selected' : ''}`} onClick={() => this.setPick(gameID, team, opposingTeam)}>
+      <Card className={`teamCard mb-3 ${this.state.picks[gameID] === team.abbr ? 'selected' : ''}`} onClick={() => this.setPick(gameID, team, opposingTeam, odds)}>
         <Card.Body>
           <Row className='cardContent'>
             <Col><Image src={team.logo} className='teamLogo'/></Col>
@@ -160,12 +161,12 @@ class PickMaker extends React.Component {
       rows.push(
         <Row>
           <CardDeck style={{alignItems: 'center'}}>
-            {this.renderTeamCard(game.teams[0], game.id, game.teams[1])}
+            {this.renderTeamCard(game.teams[0], game.id, game.teams[1], game.odds)}
             <div className={'gameInfo'}>
               <h3>vs</h3>
               <span>{game.odds}</span>
             </div>
-            {this.renderTeamCard(game.teams[1], game.id, game.teams[0])}
+            {this.renderTeamCard(game.teams[1], game.id, game.teams[0], game.odds)}
           </CardDeck>
         </Row>
       )
@@ -194,7 +195,14 @@ class PickMaker extends React.Component {
                       <Card.Body>
                         <Row className='cardContent'>
                           <Col><Image src={item.team.logo} className='teamLogo'/></Col>
-                          <Col><Card.Title>{item.team.abbr} over {item.opposingTeam.abbr}</Card.Title></Col>
+                          <Col>
+                            <Row className='ordererGameData'>
+                              <Card.Title>{item.team.abbr} over {item.opposingTeam.abbr}</Card.Title>
+                            </Row>
+                            <Row className='ordererGameData'>
+                              <span>{item.odds}</span>
+                            </Row>
+                          </Col>
                           <Col><Image src={item.opposingTeam.logo} className='teamLogo'/></Col>
                         </Row>
                       </Card.Body>

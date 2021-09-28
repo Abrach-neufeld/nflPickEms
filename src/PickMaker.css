@@ -15,11 +15,16 @@
 
 .cardContent {
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  text-align: center;
 }
 
 .teamLogo {
   width: 100px;
+}
+
+.ordererGameData {
+  justify-content: center;
 }
 
 @media only screen and (max-width: 980px) {
