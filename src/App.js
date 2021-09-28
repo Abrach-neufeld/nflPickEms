@@ -36,8 +36,9 @@ class App extends React.Component {
       const now = Date.now() / 1000
       const lockTime = moment.unix(submissionLock.seconds)
       this.setState({
-        submissionLock: now > submissionLock.seconds,
-        lockTime
+        //submissionLock: now > submissionLock.seconds,
+        lockTime,
+        submissionLock: false
       })
     })
   }

@@ -143,7 +143,7 @@ class PickMaker extends React.Component {
 
   renderTeamCard = (team, gameID, opposingTeam) => {
     return (
-      <Card border={this.state.picks[gameID] === team.abbr ? 'success' : ''} className='teamCard mb-3' onClick={() => this.setPick(gameID, team, opposingTeam)}>
+      <Card className={`teamCard mb-3 ${this.state.picks[gameID] === team.abbr ? 'selected' : ''}`} onClick={() => this.setPick(gameID, team, opposingTeam)}>
         <Card.Body>
           <Row className='cardContent'>
             <Col><Image src={team.logo} className='teamLogo'/></Col>

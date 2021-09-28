@@ -7,6 +7,12 @@
   background-color: lightskyblue;
 }
 
+.selected {
+  border-width: 3px;
+  border-color: #68D391;
+  color: #10B981;
+}
+
 .cardContent {
   align-items: center;
   justify-content: space-around;
